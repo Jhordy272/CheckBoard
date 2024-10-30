@@ -46,7 +46,7 @@ public class UserEntity implements UserDetails {
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "job_title", referencedColumnName = "id")
-    private JobTitle jobTitle;
+    private JobTitleEntity jobTitle;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
