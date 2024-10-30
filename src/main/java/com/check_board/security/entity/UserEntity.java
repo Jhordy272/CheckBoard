@@ -43,6 +43,10 @@ public class UserEntity implements UserDetails {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rol", referencedColumnName = "id")
     private RolEntity rol;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "job_title", referencedColumnName = "id")
+    private JobTitle jobTitle;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
