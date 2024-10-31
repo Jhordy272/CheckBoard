@@ -2,8 +2,10 @@ package com.check_board.controller;
 
 import com.check_board.dto.Message;
 import com.check_board.security.dto.UserDto;
+import com.check_board.security.entity.JobTitleEntity;
 import com.check_board.security.entity.RolEntity;
 import com.check_board.security.entity.UserEntity;
+import com.check_board.security.repository.JobTitleRepository;
 import com.check_board.security.repository.RolRepository;
 import com.check_board.security.repository.UserRepository;
 import java.util.List;
@@ -33,6 +35,8 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     RolRepository rolRepository;
+    @Autowired
+    JobTitleRepository jobTitleRepository;
 
     @GetMapping("")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -64,6 +68,8 @@ public class UserController {
         user.setEmail(userDto.getEmail());
         RolEntity rol = rolRepository.findById(userDto.getIdRol()).orElse(null);
         user.setRol(rol);
+        JobTitleEntity jobTitle = jobTitleRepository.findById(userDto.getJobTitle()).orElse(null);
+        user.setJobTitle(jobTitle);
         userRepository.save(user);
         return new ResponseEntity<>(new Message("Usuario creado exitosamente."), HttpStatus.OK);
     }
@@ -84,6 +90,8 @@ public class UserController {
         user.setEmail(userDto.getEmail());
         RolEntity rol = rolRepository.findById(userDto.getIdRol()).orElse(null);
         user.setRol(rol);
+        JobTitleEntity jobTitle = jobTitleRepository.findById(userDto.getJobTitle()).orElse(null);
+        user.setJobTitle(jobTitle);
         userRepository.save(user);
         return new ResponseEntity<>(new Message("Usuario actualizado exitosamente."), HttpStatus.OK);
     }
