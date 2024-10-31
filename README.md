@@ -58,7 +58,7 @@ springdoc.swagger-ui.path=/swagger-ui.html
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/Jhordy272/check_board
+    git clone https://github.com/Jhordy272/CheckBoard
     ```
 
 2. Navigate to the project directory:
