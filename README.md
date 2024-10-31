@@ -1,6 +1,6 @@
-# Test Case Reporting API
+# Check Board API
 
-This API enables the management of users, roles, projects, and test case reports. Developed in **Spring Boot**, it follows RESTful principles for easy integration with other systems.
+This API enables the management of users, roles, services line, job titles, division and projects. Developed in **Spring Boot**, it follows RESTful principles for easy integration with other systems.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ This API enables the management of users, roles, projects, and test case reports
 
 - Management of users and roles.
 - Project management with user associations.
-- Creation and reporting of test cases for each project.
+- Project-Based Hour Planning.
 - Authentication and authorization using **JWT**.
 - JSON format responses.
 
@@ -58,13 +58,13 @@ springdoc.swagger-ui.path=/swagger-ui.html
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/Jhordy272/TestReport
+    git clone https://github.com/Jhordy272/check_board
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd TestReport
+    cd check_board
     ```
 
 3. Install the required dependencies:
@@ -121,26 +121,33 @@ The API will be available at http://localhost:8080.
 - `PUT /users/{id}`: Modifies a role by ID.
 - `DELETE /users/{id}`: Deletes a role by ID.
 
+### Service Line Management
+- `GET /service-line`: Retrieves all services lines.
+- `GET /service-line/{id}`: Retrieves a service line by ID.
+- `POST /service-line`: Creates a service line.
+- `PUT /service-line/{id}`: Modifies a service line by ID.
+- `DELETE /service-line/{id}`: Deletes a service line by ID.
+
+### Job Title Management
+- `GET /job-title`: Retrieves all job titles.
+- `GET /job-title/{id}`: Retrieves a job title by ID.
+- `POST /job-title`: Creates a job title.
+- `PUT /job-title/{id}`: Modifies a job title by ID.
+- `DELETE /job-title/{id}`: Deletes a job title by ID.
+
+### Division Management
+- `GET /division`: Retrieves all divisions titles.
+- `GET /division/{id}`: Retrieves a job title by ID.
+- `POST /division`: Creates a job title.
+- `PUT /division/{id}`: Modifies a job title by ID.
+- `DELETE /division/{id}`: Deletes a job title by ID.
+
 ### Project Management
 - `GET /projects`: Retrieves all projects.
 - `GET /projects/{id}`: Retrieves a project by ID.
 - `POST /projects`: Creates a projects.
 - `PUT /projects/{id}`: Modifies a project by ID.
 - `DELETE /projects/{id}`: Deletes a project by ID.
-
-### Status Management
-- `GET /status`: Retrieves all status.
-- `GET /status/{id}`: Retrieves a status by ID.
-- `POST /status`: Creates a status.
-- `PUT /status/{id}`: Modifies a status by ID.
-- `DELETE /status/{id}`: Deletes a status by ID.
-
-### Test Report Management
-- `GET /reports`: Retrieves all reports.
-- `GET /reports/{id}`: Retrieves a report by ID.
-- `POST /reports`: Creates a report.
-- `PUT /reports/{id}`: Modifies a report by ID.
-- `DELETE /reports/{id}`: Deletes a report by ID.
 
 ## Request Examples
 
@@ -189,7 +196,23 @@ The API will be available at http://localhost:8080.
   "username": "user1",
   "password": "123456",
   "email": "user1@mail.com",
-  "idRol": 1
+  "idRol": 1,
+  "jobTitle": 1
+}
+```
+### Create a Job Title
+
+`POST /job-title`
+
+**Headers:**
+- `Content-Type: application/json`
+- `Authorization: Bearer <JWT_TOKEN>`
+
+**Body:**
+```json
+{
+  "name": "jobtitle1",
+  "hourlyRate": 100
 }
 ```
 
@@ -204,44 +227,19 @@ The API will be available at http://localhost:8080.
 **Body:**
 ```json
 {
-  "name": "Project 1",
+  "name": "project1",
+  "year": "2023",
+  "startDate": "2024-10-31T02:16:56.445Z",
+  "endDate": "2024-10-31T02:16:56.445Z",
+  "fees": 1000,
+  "extraExpenses": 100,
+  "budgetedHours": 20,
+  "hourlyRate": 20,
+  "total": 1100,
+  "division": 1,
+  "serviceLine": 1,
   "manager": 1,
-  "description": "Description Project 1"
-}
-```
-
-### Create a Status
-
-`POST /status`
-
-**Headers:**
-- `Content-Type: application/json`
-- `Authorization: Bearer <JWT_TOKEN>`
-
-**Body:**
-```json
-{
-  "name": "Status 1"
-}
-```
-
-
-### Create a Status
-
-`POST /reports`
-
-**Headers:**
-- `Content-Type: application/json`
-- `Authorization: Bearer <JWT_TOKEN>`
-
-**Body:**
-```json
-{
-  "name": "Report 1",
-  "project": 1,
-  "status": 1,
-  "details": "Details Report 1",
-  "executionDate": "2024-10-28T02:55:21.657Z"
+  "observations": "observation project1"
 }
 ```
 
