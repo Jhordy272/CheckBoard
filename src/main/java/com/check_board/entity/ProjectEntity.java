@@ -54,7 +54,7 @@ public class ProjectEntity {
     private int total;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "job_title", referencedColumnName = "id")
+    @JoinColumn(name = "division", referencedColumnName = "id")
     private DivisionEntity division;
     
     @ManyToOne(fetch = FetchType.EAGER)

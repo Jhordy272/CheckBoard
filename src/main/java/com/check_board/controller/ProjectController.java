@@ -89,7 +89,7 @@ public class ProjectController {
         
         project.setObservations(projectDto.getObservations());
         projectRepository.save(project);
-        return new ResponseEntity<>(new Message("Division creada exitosamente."), HttpStatus.OK);
+        return new ResponseEntity<>(new Message("Proyecto creada exitosamente."), HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
