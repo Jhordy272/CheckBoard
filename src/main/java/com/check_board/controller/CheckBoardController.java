@@ -67,10 +67,10 @@ public class CheckBoardController {
     @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody CheckBoardDto checkBoardDto) {
-        if (!projectRepository.existsById(id)) {
+        if (!checkBoardRepository.existsById(id)) {
             return new ResponseEntity<>(new Message("El CheckBoard solicitado no existe."), HttpStatus.NOT_FOUND);
         }
-        if(!projectRepository.findByName(checkBoardDto.getName()).isEmpty()){
+        if(!checkBoardRepository.findByName(checkBoardDto.getName()).isEmpty()){
             return new ResponseEntity<>(new Message("El CheckBoardName ya existe."), HttpStatus.BAD_REQUEST);
         }
         CheckBoardEntity checkBoard = checkBoardRepository.findById(id).orElse(null);
