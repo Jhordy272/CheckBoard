@@ -39,6 +39,13 @@ public class CheckBoardController {
         return new ResponseEntity<>(listCheckBoard, HttpStatus.OK);
     }
     
+    @GetMapping("/byProject/{project}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<?> listByProject(@PathVariable("project") int project) {
+        List<CheckBoardEntity> listCheckBoard = checkBoardRepository.findByProject(project);
+        return new ResponseEntity<>(listCheckBoard, HttpStatus.OK);
+    }
+    
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> getById(@PathVariable("id") int id) {
