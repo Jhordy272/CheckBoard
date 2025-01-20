@@ -1,6 +1,6 @@
 # Check Board API
 
-This API is a managerial system designed to create and manage check boards for monitoring budgets, assigning personnel by week, and managing the roles of assigned staff. It includes functionalities for managing users, roles, service lines, job titles, divisions, and projects. Developed in Spring Boot, the API adheres to RESTful principles for seamless integration with other systems. Secure access and operations are ensured through JWT-based authentication.
+A managerial system API designed to create and manage check boards for monitoring budgets, assigning personnel by week, and defining the roles of assigned staff. It also includes functionalities for managing users, roles, service lines, job titles, divisions, and projects. Built with Spring Boot, the API adheres to RESTful principles for seamless integration with other systems and ensures secure access and operations via JWT-based authentication.
 
 ## Table of Contents
 
