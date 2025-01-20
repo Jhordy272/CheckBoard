@@ -1,6 +1,6 @@
 # Check Board API
 
-This API enables the management of users, roles, services line, job titles, division and projects. Developed in **Spring Boot**, it follows RESTful principles for easy integration with other systems.
+This API facilitates the management of users, roles, service lines, job titles, divisions, and projects. Additionally, it handles the management of the check board, allowing for the assignment of time allocations for each worker, specifying the week and duration of their work schedule. Developed in **Spring Boot**, it follows RESTful principles for seamless integration with other systems. The API also includes JWT-based authentication to ensure secure access and operations.
 
 ## Table of Contents
 
